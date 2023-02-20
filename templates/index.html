@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} DinoSite! {% endblock %}
+
+{% block content %}
+<h2>DinoSite!</h2>
+
+{% for dino in dinosaurs %} 
+
+<h2>{{ dinosaurs[dino]['name'] }}</h2>
+<figure>
+    <img src="{{ url_for('static', filename='images/'+ dino+'.webp')  }}" alt="{{ dino }}">
+    <figcaption>{{ dinosaurs[dino]['source-credit'] }}</figcaption>
+</figure>
+
+{% endfor %} 
+
+{% endblock %}
