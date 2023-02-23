@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+
+{% block title %}FAQ{% endblock %} 
+
+{% block content %} 
+
+<h1>FAQ</h1>
+
+{% for row in faq %} 
+<details>
+    <summary> {{ row[0] }} </summary>
+    <p> {{ row[1] }} </p>
+</details>
+
+{% endfor %} 
+{% endblock %} 

@@ -9,15 +9,25 @@ def get_dinos():
         dinosaurs={row['slug']: {'name': row['name'], 'description':row['description'], 'image':row['image'], 'image-credit':row['image-credit'], 'source-url':row['source-url'], 'source-credit':row['source-credit']} for row in data}
     return dinosaurs
 
+def get_faq():
+    fileList = []
+    with open('faq.csv', 'r') as csvfile:
+        data=csv.reader(csvfile)
+        for row in data:
+            fileList.append(row)
+        return fileList 
+
 # @app.route('/')
 # def index():
 #     dinosaurs=get_dinos()
 #     print(dinosaurs)
 #     return render_template('index.html', dinosaurs=dinosaurs)
 
+print(get_faq())
 @app.route('/')
 @app.route('/dino')
 @app.route('/dino/<dino>')
+
 def index(dino=None):
     dinosaurs=get_dinos()
     if dino in dinosaurs.keys():
@@ -30,3 +40,7 @@ def index(dino=None):
 def about():
     return render_template('about.html')
 
+@app.route('/faq')
+def faq():
+    faq = get_faq()
+    return render_template('faq.html', faq = faq)
