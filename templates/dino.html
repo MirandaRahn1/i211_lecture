@@ -4,7 +4,7 @@
 
 {% block content %} 
 <figure>
-    <img src="{{ url_for('static', filename='images/'+dinosaur['image'] ) }}">
+    <img class="mt-5" src="{{ url_for('static', filename='images/'+dinosaur['image'] ) }}">
     <figcaption>{{ dinosaur['image-credit'] }}</figcaption>
 </figure>
 
