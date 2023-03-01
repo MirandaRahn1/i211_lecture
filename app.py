@@ -27,7 +27,7 @@ def get_faq():
 #     print(dinosaurs)
 #     return render_template('index.html', dinosaurs=dinosaurs)
 
-print(get_faq())
+# print(get_faq())
 @app.route('/')
 @app.route('/dino')
 @app.route('/dino/<dino>')
