@@ -97,3 +97,28 @@ def add_dino():
         return redirect(url_for('index'))
     else:
         return render_template('add-dino.html')
+    
+@app.route('/dino-quiz', methods=['GET', 'POST'])
+def dino_quiz():
+    if request.method == 'POST':
+        #process data, first grab data from the request
+        responses = {}
+        responses['Question 1'] = request.form['Question1']
+        responses['Question 2'] = request.form.getlist('Question2')
+        responses['Question 3'] = request.form['Question3']
+        responses['Question 4'] = request.form['Question4']
+        # print anwsers
+        print(responses)
+        #create a new dictionary with the graded results in it
+        quiz_answers={'Question 1':'North America', 'Question 2':['Triceratops', 'Stegosaurus'], 'Question 3':'True', 'Question 4':'66'}
+        quiz_results={}
+        #grade the resppnses
+        for question in responses:
+            if responses[question] == quiz_answers[question]:
+                quiz_results[question] = 'Correct! The answer is ' + str(quiz_answers[question])
+            else:
+                quiz_results[question] = 'Incorrect! The answer was ' + str(quiz_answers[question])
+        # return render template, pass the results disctionary 
+        return render_template('dino-quiz-results.html', quiz_results=quiz_results)
+    else:
+        return render_template('dino-quiz.html')
