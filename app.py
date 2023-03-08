@@ -7,7 +7,6 @@ app = Flask(__name__)
 DINO_PATH = app.root_path + '/dinosaurs.csv'
 DINO_KEYS = ['slug', 'name', 'description', 'image', 'image-credit', 'source-url', 'source-credit']
 
-
 DINO_PATH = app.root_path + '/dinosaurs.csv'
 FAQ_PTH = app.root_path + '/faq.csv'
 
