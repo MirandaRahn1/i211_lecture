@@ -6,10 +6,10 @@
 <h1 class="mt-5">Dino Quiz!</h1>
 
 <form method="POST" name="dino_form">
-    <div>
+    <div class="mb-3">
         <h2>Question 1</h2>
         <legend>Dinosaur fossils have been found on all seven continents. On which continent have the most dinosaur fossils been found?</legend>
-        <select name="Question1" id="Question1">
+        <select class="form-select mb-3" aria-label="seven continents" id="Question1" name="Question1">
             <option value="Africa">Africa</option>
             <option value="Antarctica">Antarctica</option>
             <option value="Asia">Asia</option>
@@ -19,45 +19,45 @@
             <option value="South America">South America</option>
         </select>
     </div>
-    <div>
+    <div class="mb-3">
         <h2>Question 2</h2>
         <legend>Which of these dinosaurs are herbivores?</legend>
         <ul>
-            <li>
-                <label for="Triceratops">Triceratops</label>
-                <input type="checkbox" name="Question2" value="Triceratops" id="Triceratops">
+            <li class="form-check">
+                <label class="form-check-label" for="Triceratops">Triceratops</label>
+                <input class="form-check-input" type="checkbox" name="Question2" value="Triceratops" id="Triceratops">
             </li>
         </ul>
         <ul>
-            <li>
-                <label for="Allosaurus">Allosaurus</label>
-                <input type="checkbox" name="Question2" value="Allosaurus" id="Allosaurus">
+            <li class="form-check">
+                <label class="form-check-label" for="Allosaurus">Allosaurus</label>
+                <input class="form-check-input" type="checkbox" name="Question2" value="Allosaurus" id="Allosaurus">
             </li>
         </ul>
         <ul>
-            <li>
-                <label for="Stegosaurus">Stegosaurus</label>
-                <input type="checkbox" name="Question2" value="Stegosaurus" id="Stegosaurus">
+            <li class="form-check">
+                <label class="form-check-label" for="Stegosaurus">Stegosaurus</label>
+                <input class="form-check-input" type="checkbox" name="Question2" value="Stegosaurus" id="Stegosaurus">
             </li>
         </ul>
         <ul>
-            <li>
-                <label for="Velociraptor">Velociraptor</label>
-                <input type="checkbox" name="Question2" value="Velociraptor" id="Velociraptor">
+            <li class="form-check">
+                <label class="form-check-label" for="Velociraptor">Velociraptor</label>
+                <input class="form-check-input" type="checkbox" name="Question2" value="Velociraptor" id="Velociraptor">
             </li>
         </ul>
     </div>
-    <div>
+    <div class="mb-3">
         <h2>Question 3</h2>
         <legend>All dinosaurs hatch from eggs. True or false?</legend>
         <ul>
-            <li>
-                <label for="True">True</label>
-                <input type="radio" name="Question3" value="True" id="True">
+            <li class="form-check">
+                <label class="form-check-label" for="True">True</label>
+                <input class="form-check-input" type="radio" name="Question3" value="True" id="True">
             </li>
-            <li>
-                <label for="False">False</label>
-                <input type="radio" name="Question3" value="False" id="False">
+            <li class="form-check">
+                <label class="form-check-label" for="False">False</label>
+                <input class="form-check-input" type="radio" name="Question3" value="False" id="False">
             </li>
         </ul>
     </div>
@@ -65,13 +65,13 @@
         <h2>Question 4</h2>
         <legend>Dinosaurs went extinct:</legend>
         <div>
-            <input type="text" id="Question4" name="Question4">
-            <label for="Question4">million years ago</label>
+            <input class="form-control" type="text" id="Question4" name="Question4">
+            <label class="form-label" for="Question4">million years ago</label>
         </div>
     </div>
     <div>
-        <button type="reset" value="Reset">Reset</button>
-        <button type="submit" value="Submit">Submit</button>
+        <button class="btn btn-danger" type="reset" value="Reset">Reset</button>
+        <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
     </div>
 </form>
 {% endblock %}

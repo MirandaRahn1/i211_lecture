@@ -104,8 +104,8 @@ def dino_quiz():
         #process data, first grab data from the request
         responses = {}
         responses['Question 1'] = request.form['Question1']
-        responses['Question 2'] = request.form.getlist('Question2')
-        responses['Question 3'] = request.form['Question3']
+        responses['Question 2'] = "and".join(request.form.getlist('Question2'))
+        responses['Question 3'] = request.form.get('Question3', 'false')
         responses['Question 4'] = request.form['Question4']
         # print anwsers
         print(responses)
@@ -113,9 +113,11 @@ def dino_quiz():
         quiz_answers={'Question 1':'North America', 'Question 2':['Triceratops', 'Stegosaurus'], 'Question 3':'True', 'Question 4':'66'}
         quiz_results={}
         #grade the resppnses
+        score = 0
         for question in responses:
             if responses[question] == quiz_answers[question]:
                 quiz_results[question] = 'Correct! The answer is ' + str(quiz_answers[question])
+                score+=1
             else:
                 quiz_results[question] = 'Incorrect! The answer was ' + str(quiz_answers[question])
         # return render template, pass the results disctionary 
