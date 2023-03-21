@@ -121,6 +121,6 @@ def dino_quiz():
             else:
                 quiz_results[question] = 'Incorrect! The answer was ' + str(quiz_answers[question])
         # return render template, pass the results disctionary 
-        return render_template('dino-quiz-results.html', quiz_results=quiz_results)
+        return render_template('dino-quiz-results.html', quiz_results=quiz_results, score=score)
     else:
         return render_template('dino-quiz.html')
