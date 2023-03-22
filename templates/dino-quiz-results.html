@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+{% block title %} Dino Quiz Results {% endblock %} 
+
+{% block content %}
+<h1 class="mt-5">Dino Quiz Results!</h1>
+
+{% for question in quiz_results %} 
+<h2 class="text-primary">{{ question }}</h2>
+<p>{{ quiz_results[question] }}</p>
+{% endfor %}
+
+<h2 class="{% if score == 4 %}text-success{% else %}text-danger{% endif %}">Final Score: {{ score }}/4</h2>
+
+<a href="{{ url_for('dino_quiz') }}">
+    <button type="button" class="btn btn-secondary">Try Again</button>
+</a>
+
+{% endblock %}

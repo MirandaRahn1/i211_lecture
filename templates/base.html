@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%  block title  %} {% endblock %}</title>
@@ -32,6 +32,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('faq')  }}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('add_dino')  }}">Add a Dino</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('dino_quiz')  }}">Dino Quiz</a>
                 </li>
               </ul>
             </div>
