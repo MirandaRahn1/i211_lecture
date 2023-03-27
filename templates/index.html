@@ -11,7 +11,7 @@
         <h2>{{ dinosaurs[dino]['name'] }}</h2>
             <a href="{{ url_for('index', dino=dino) }}">
             <figure>
-                <img class="img-fluid" src="{{ url_for('static', filename='images/'+ dinosaurs[dino]['image'])  }}" alt="{{ dino }}">
+                <img class="img-fluid" src="{{ url_for (static', filename='images/'+ dinosaurs[dino]['image'])  }}" alt="{{ dino }}">
                 <figcaption>{{ dinosaurs[dino]['source-credit'] }}</figcaption>
             </figure>
             </a>
