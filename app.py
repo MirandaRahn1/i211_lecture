@@ -1,7 +1,15 @@
 from flask import Flask, render_template, url_for, request, redirect
 import csv
+from os.path import exists
 
 app = Flask(__name__)
+
+#pull in config data
+app.config.from_pyfile(app.root_path + '/config_defaults.py')
+if exists(app.root_path + '/config.py'):
+    app.config.from_pyfile(app.root_path + '/config.py')
+
+import database 
 
 #global variables to help with getting and setting dinosaur data
 DINO_PATH = app.root_path + '/dinosaurs.csv'
@@ -55,14 +63,14 @@ def set_dinos(dinosaurs):
 
 @app.route('/')
 @app.route('/dino')
-@app.route('/dino/<dino>')
-
-def index(dino=None):
-    dinosaurs=get_dinos()
-    if dino in dinosaurs.keys():
-        print(dino)
-        return render_template('dino.html', dinosaur=dinosaurs[dino])
+@app.route('/dino/<dino_id>')
+def index(dino_id=None):
+    if dino_id:
+        dinosaur = database.get_dino(dino_id)
+        facts = database.get_facts(dino_id)
+        return render_template('dino.html', dinosaur=dinosaur, facts=facts)
     else:
+        dinosaurs = database.get_dinos()
         return render_template('index.html', dinosaurs=dinosaurs)
 
 @app.route('/about')
@@ -79,20 +87,15 @@ def add_dino():
     if request.method == 'POST':
     # grab the user data from POST 
         in_slug = request.form['slug']
-        in_description = request.form['description']
         in_name = request.form['name']
+        in_description = request.form['description']
         in_image = request.form['image']
         in_image_credit = request.form['image-credit']
         in_source_url = request.form['source-url']
         in_source_credit = request.form['source-credit']
-    # create a new dictionary with the new dino data in it
-        new_dino = {'slug':in_slug, 'name':in_name, 'description':in_description, 'image':in_image, 'image-credit':in_image_credit, 'source-url':in_source_url, 'source-credit':in_source_credit} 
-    # grab the existing dino data 
-        print(new_dino)
-        dinosaurs = get_dinos()
-        dinosaurs[in_slug] = new_dino
-    # write the combined data back out to csv
-        set_dinos(dinosaurs)
+
+        database.insert_dino(in_slug, in_name, in_description, in_image, in_image_credit, in_source_url, in_source_credit)
+
         return redirect(url_for('index'))
     else:
         return render_template('add-dino.html')
@@ -123,3 +126,16 @@ def dino_quiz():
         return render_template('dino-quiz-results.html', quiz_results=quiz_results, score=score)
     else:
         return render_template('dino-quiz.html')
+
+
+@app.route('/dino/<dino_id>/addfact', methods=['GET', 'POST'])
+def add_fact(dino_id=None):
+    dino_id = int(dino_id)
+    if request.method == 'POST':
+        name = request.form['name'] 
+        fact = request.form['fact'] 
+        database.insert_fact(dino_id, name, fact)
+        return redirect(url_for('index', dino_id=dino_id)) 
+    else:
+        dino = database.get_dino(dino_id) 
+        return render_template('add_fact.html', dino=dino) 

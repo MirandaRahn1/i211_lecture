@@ -8,11 +8,11 @@
     <div class="row">
         {% for dino in dinosaurs %} 
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-        <h2>{{ dinosaurs[dino]['name'] }}</h2>
-            <a href="{{ url_for('index', dino=dino) }}">
+        <h2>{{ dino['name'] }}</h2>
+            <a href="{{ url_for('index', dino_id=dino['id']) }}">
             <figure>
-                <img class="img-fluid" src="{{ url_for (static', filename='images/'+ dinosaurs[dino]['image'])  }}" alt="{{ dino }}">
-                <figcaption>{{ dinosaurs[dino]['source-credit'] }}</figcaption>
+                <img class="img-fluid" src="{{ url_for ('static', filename='images/'+ dino['image'])  }}" alt="{{ dino['slug'] }}">
+                <figcaption>{{ dino['source-credit'] }}</figcaption>
             </figure>
             </a>
         </div>

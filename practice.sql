@@ -52,7 +52,7 @@ ALTER TABLE store MODIFY addr_street VARCHAR(25);
 INSERT INTO customer (id, first_name, last_name, gender, phone) VALUES
 (101, "Pat", "Hammonds", "F", "801-555-4360"),
 (102, "Chris", "Fields", "M", "312-633-0912"),
-(101, "Jordan", "Vills", "F", "535-741-2873");
+(103, "Jordan", "Vills", "F", "535-741-2873");
 
 INSERT INTO pet (pet_id, dob, name, species, breed, gender, date_in, n_date, price) VALUES
 (1001, "2021-05-20", "Gabby", "cat", "tabby", "F", "2021-06-30", "2021-08-18", 39.99),
@@ -72,19 +72,20 @@ WHERE last_name="Hammonds" AND first_name="Pat";
 
 SELECT name FROM pet WHERE dob<"2022-01-01";
 
+DELETE FROM pet WHERE name='Spot';
 DELETE FROM customer WHERE last_name="Fields" AND first_name="Chris";
 
-CREATE TABLE dinosaur 
-(
-id INT NOT NULL,
-slug VARCHAR(15),
-name VARCHAR(20),
-description TEXT,
-image VARCHAR(25),
-image_credit VARCHAR(60),
-source_url VARCHAR(65),
-source_credit VARCHAR(150)
-) ENGINE=INNODB;
+-- CREATE TABLE dinosaur 
+-- (
+-- id INT NOT NULL,
+-- slug VARCHAR(15),
+-- name VARCHAR(20),
+-- description TEXT,
+-- image VARCHAR(25),
+-- image_credit VARCHAR(60),
+-- source_url VARCHAR(65),
+-- source_credit VARCHAR(150)
+-- ) ENGINE=INNODB;
 
 INSERT INTO customer VALUES
 (104, 'F', '940-324-8860', 'Patrick', 'Mary'),
@@ -113,3 +114,8 @@ SELECT name, dob
 FROM pet
 WHERE species='dog' AND n_date
 IS NULL;
+
+ALTER TABLE pet MODIFY pet_id INT PRIMARY KEY;
+ALTER TABLE customer MODIFY id INT PRIMARY KEY;
+
+
